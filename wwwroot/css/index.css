@@ -1,0 +1,210 @@
+﻿@import url(https://fonts.googleapis.com/css?family=PT+Mono);
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+/* Button Colors */
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+i {
+    font-family: 'entypo', sans-serif;
+    content: "";
+    font-style: normal;
+    display: inline-block;
+    position: absolute;
+    left: 85%;
+    font-size: .7em;
+    top: 40%;
+    opacity: 0;
+    transition: all 0.2s;
+}
+
+button:hover i {
+    left: 88%;
+    opacity: 1;
+    transition: all 0.2s;
+}
+
+@media screen and (max-width: 340px) {
+    button:hover i {
+        left: 92%;
+    }
+}
+
+section {
+    padding: 3em 0;
+}
+
+.blue {
+    background-color: #86C7DB;
+}
+
+    .blue button {
+        margin: 2em auto;
+        position: relative;
+        display: block;
+        color: white;
+        border: 1px solid #fff;
+        padding: 1.4em 2.6em;
+        font-family: 'PT Mono', sans-serif;
+        transition: all 0.2s;
+        font-size: 1.4em;
+    }
+
+@media screen and (max-width: 340px) {
+    .blue button {
+        padding: 0.8em 1.4em;
+        font-size: 1em;
+    }
+}
+
+.blue button span {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    left: 0;
+    transition: all 0.2s;
+}
+
+.blue button:hover {
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.blue button:hover {
+    background-color: #71bcd3;
+}
+
+.green {
+    background-color: #85AE52;
+}
+
+    .green button {
+        margin: 2em auto;
+        position: relative;
+        display: block;
+        color: white;
+        border: 1px solid #fff;
+        padding: 1.4em 2.6em;
+        font-family: 'PT Mono', sans-serif;
+        transition: all 0.2s;
+        font-size: 1.4em;
+    }
+
+@media screen and (max-width: 340px) {
+    .green button {
+        padding: 0.8em 1.4em;
+        font-size: 1em;
+    }
+}
+
+.green button span {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    left: 0;
+    transition: all 0.2s;
+}
+
+.green button:hover {
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.green button:hover {
+    background-color: #789d4a;
+}
+
+.purple {
+    background-color: #675B99;
+}
+
+    .purple button {
+        margin: 2em auto;
+        position: relative;
+        display: block;
+        color: white;
+        border: 1px solid #fff;
+        padding: 1.4em 2.6em;
+        font-family: 'PT Mono', sans-serif;
+        transition: all 0.2s;
+        font-size: 1.4em;
+    }
+
+@media screen and (max-width: 340px) {
+    .purple button {
+        padding: 0.8em 1.4em;
+        font-size: 1em;
+    }
+}
+
+.purple button span {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    left: 0;
+    transition: all 0.2s;
+}
+
+.purple button:hover {
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.purple button:hover {
+    background-color: #5c5189;
+}
+
+.pink {
+    background-color: #FF7362;
+}
+
+    .pink button {
+        margin: 2em auto;
+        position: relative;
+        display: block;
+        color: white;
+        border: 1px solid #fff;
+        padding: 1.4em 2.6em;
+        font-family: 'PT Mono', sans-serif;
+        transition: all 0.2s;
+        font-size: 1.4em;
+    }
+
+@media screen and (max-width: 340px) {
+    .pink button {
+        padding: 0.8em 1.4em;
+        font-size: 1em;
+    }
+}
+
+.pink button span {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    left: 0;
+    transition: all 0.2s;
+}
+
+.pink button:hover {
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.pink button:hover {
+    background-color: #ff5c49;
+}
+
+button:hover span {
+    left: -15px;
+    transition: all 0.2s;
+}
+
+@media screen and (max-width: 340px) {
+    button:hover span {
+        left: -5px;
+    }
+}
