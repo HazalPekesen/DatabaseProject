@@ -1,0 +1,36 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Operations</title>
+    <link rel="stylesheet" href="~/css/cssOpt/StyleSheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+</head>
+<body>
+    <header>
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    </header>
+    <br />
+    <br />
+    <br />
+    <h1>Data Operations</h1>
+    <p>please select the operation you want to perform on the data.</p>
+    <div class="frame">
+        <a href="/Exam/View" class="custom-btn btn-6"><span>View Datas</span></a>
+        <a href="/Exam/Add" class="custom-btn btn-6"><span>Add Data</span></a>
+        <br /> <br />
+        <a href="/Home/Index" class="custom-btn btn-6"><span>Home Page</span></a>
+    </div>
+</body>
+</html>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-info" role="alert" style="text-align: center">
+        @TempData["SuccessMessage"]
+    </div>
+}

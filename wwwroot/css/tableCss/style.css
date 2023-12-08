@@ -1,0 +1,58 @@
+﻿@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
+
+body {
+    font-family: "Open Sans";
+}
+
+.standard-table {
+    border: 1px solid #EAEAEA;
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+    .standard-table th {
+        text-align: left;
+        width: 150px;
+        height: 50px;
+        color: #179BAA;
+        font-weight: 600;
+        font-size: 13px;
+        padding-left: 10px;
+        border-bottom: 1px solid #ABCFD3;
+    }
+
+    .standard-table td {
+        width: 100px;
+        padding: 10px;
+        font-weight: 400;
+        font-size: 14px;
+        border-right: 1px solid #eaeaea;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    .standard-table .larger-box {
+        width: 250px;
+    }
+
+    .standard-table tr {
+        height: 50px;
+    }
+
+    .standard-table td:nth-child(2) {
+        text-decoration: underline;
+        color: #ED2D7E;
+    }
+
+    .standard-table tr:nth-child(even) {
+        background-color: #f9f9fb;
+    }
+
+    .standard-table tbody tr:hover {
+        background-color: #f4f4fb;
+    }
+
+.alternative-table th {
+    background-color: #35374F;
+    color: #ACE1E7;
+}

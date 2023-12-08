@@ -1,5 +1,6 @@
 ﻿using DatabaseProject.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Client;
 using System.Diagnostics;
 
 namespace DatabaseProject.Controllers
@@ -14,6 +15,11 @@ namespace DatabaseProject.Controllers
         }
 
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult DataOperations()
         {
             return View();
         }

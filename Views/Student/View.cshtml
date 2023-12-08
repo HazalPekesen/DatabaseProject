@@ -1,0 +1,52 @@
+﻿@{
+    Layout = null;
+}
+
+@model List<Student>
+
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Data View</title>
+    <link rel="stylesheet" href="~/css/tableCss/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+</head>
+<body>
+    <br />
+    <br />
+    <br />
+    <table class="standard-table" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Student Id</th>
+                <th>Name</th>
+                <th>Department Name</th>
+                <th>Total Credit</th>
+                <th>Exam Marks</th>
+                <th>Update</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.StudentId</td>
+                    <td>@item.Name</td>
+                    <td>@item.DeptName</td>
+                    <td>@item.TotCred</td>
+                    <td>@item.ExamMarks</td>
+                    <td><a asp-action="Update" asp-controller="Student" asp-route-id="@item.StudentId" class="button">Update</a></td>
+                    <td><a asp-action="Remove" asp-controller="Student" asp-route-id="@item.StudentId" class="button">Remove</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div style="text-align:center !important ;">
+        <a type="button" href="/Student/Index" class="btn btn-outline-primary">Anasayfa'ya Dön!</a>
+    </div>
+</body>
+</html>
