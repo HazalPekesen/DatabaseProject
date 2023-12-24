@@ -25,18 +25,21 @@
             <label for="inputName" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-4">
                 <input asp-for="Name" type="text" class="form-control" id="inputName" placeholder="Name">
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
             <label for="inputSurname" class="col-sm-2 col-form-label">Place</label>
             <div class="col-sm-4">
                 <input asp-for="Place" type="text" class="form-control" id="inputSurname" placeholder="Place">
+                <span asp-validation-for="Place" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
             <label for="inputMail" class="col-sm-2 col-form-label">Time</label>
             <div class="col-sm-4">
-                <input asp-for="Time" type="text" class="form-control" id="inputMail" placeholder="Time">
+                <input asp-for="Time" type="text" class="form-control" id="inputMail" placeholder="Time" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")">
+                <span asp-validation-for="Time" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">

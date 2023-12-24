@@ -19,10 +19,30 @@ namespace DatabaseProject.Controllers
         [HttpPost]
         public IActionResult Add(ExamMark entity)
         {
-            _context.ExamMarks.Add(entity);
-            _context.SaveChanges();
-            TempData["SuccessMessage"] = "Exam Marks bilgileri başarıyla eklenmiştir.";
-            return RedirectToAction("Index");
+            // ExamId'nin geçerli bir ExamId'ye karşılık geldiğini kontrol et
+            if (!_context.Exams.Any(e => e.ExamId == entity.ExamId))
+            {
+                ModelState.AddModelError("ExamId", "Invalid ExamId. Please select a valid ExamId.");
+                return View(entity);
+            }
+            if (!_context.Students.Any(e => e.StudentId == entity.StudentId))
+            {
+                ModelState.AddModelError("StudentId", "Invalid StudentId. Please select a valid StudentId.");
+                return View(entity);
+            }
+            if (!_context.Sections.Any(e => e.SectionId == entity.SectionId))
+            {
+                ModelState.AddModelError("SectionId", "Invalid SectionId. Please select a valid SectionId.");
+                return View(entity);
+            }
+            if (ModelState.IsValid)
+            {
+                _context.ExamMarks.Add(entity);
+                _context.SaveChanges();
+                TempData["SuccessMessage"] = "Exam Marks bilgileri başarıyla eklenmiştir.";
+                return RedirectToAction("Index");
+            }
+            return View(entity);
         }
 
         public IActionResult Index()

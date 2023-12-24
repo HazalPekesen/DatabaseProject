@@ -19,10 +19,14 @@ namespace DatabaseProject.Controllers
         [HttpPost]
         public IActionResult Add(Section entity)
         {
-            _context.Sections.Add(entity);
-            _context.SaveChanges();
-            TempData["SuccessMessage"] = "Section bilgileri başarıyla eklenmiştir.";
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _context.Sections.Add(entity);
+                _context.SaveChanges();
+                TempData["SuccessMessage"] = "Section bilgileri başarıyla eklenmiştir.";
+                return RedirectToAction("Index");
+            }
+            return View(entity);
         }
 
         public IActionResult Index()

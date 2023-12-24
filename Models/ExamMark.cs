@@ -7,12 +7,21 @@ namespace DatabaseProject.Models
     {
         [Key]
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "Marks is required")]
         public int Marks { get; set; }
+
+        [Required(ErrorMessage = "Student Id is required")]
         public int StudentId { get; set; } // Foreign key
-        public Student? Student { get; set; } // Navigation property
+
+        [Required(ErrorMessage = "Section Id is required")]
         public int SectionId { get; set; } // Foreign key
-        public Section? Section { get; set; } // Navigation property
+
+        [Required(ErrorMessage = "Exam Id is required")]
         public int ExamId { get; set; } // Foreign key
+
+        public Student? Student { get; set; } // Navigation property
+        public Section? Section { get; set; } // Navigation property
         public Exam? Exam { get; set; } // Navigation property
     }
 }

@@ -32,10 +32,14 @@ namespace DatabaseProject.Controllers
         [HttpPost]
         public IActionResult Add(Exam entity)
         {
-            _context.Exams.Add(entity);
-            _context.SaveChanges();
-            TempData["SuccessMessage"] = "Sınav bilgileri başarıyla eklenmiştir.";
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _context.Exams.Add(entity);
+                _context.SaveChanges();
+                TempData["SuccessMessage"] = "Sınav bilgileri başarıyla eklenmiştir.";
+                return RedirectToAction("Index");
+            }
+            return View(entity);
         }
 
         public IActionResult Update(int id)

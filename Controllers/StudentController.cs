@@ -41,7 +41,6 @@ namespace DatabaseProject.Controllers
             return View(viewModelList);
         }
 
-
         public IActionResult Add()
         {
             return View(new Student());
@@ -50,10 +49,14 @@ namespace DatabaseProject.Controllers
         [HttpPost]
         public IActionResult Add(Student entity)
         {
-            _context.Students.Add(entity);
-            _context.SaveChanges();
-            TempData["SuccessMessage"] = "Öğrenci bilgileri başarıyla eklenmiştir.";
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _context.Students.Add(entity);
+                _context.SaveChanges();
+                TempData["SuccessMessage"] = "Öğrenci bilgileri başarıyla eklenmiştir.";
+                return RedirectToAction("Index");
+            }
+            return View(entity);
         }
 
         public IActionResult Remove(int id)

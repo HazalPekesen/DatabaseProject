@@ -21,10 +21,14 @@ namespace DatabaseProject.Controllers
         [HttpPost]
         public IActionResult Add(Course entity)
         {
-            _context.Courses.Add(entity);
-            _context.SaveChanges();
-            TempData["SuccessMessage"] = "Course bilgileri başarıyla eklenmiştir.";
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _context.Courses.Add(entity);
+                _context.SaveChanges();
+                TempData["SuccessMessage"] = "Course bilgileri başarıyla eklenmiştir.";
+                return RedirectToAction("Index");
+            }
+            return View(entity);
         }
 
         public IActionResult Index()

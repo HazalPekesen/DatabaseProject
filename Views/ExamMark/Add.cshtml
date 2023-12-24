@@ -25,12 +25,14 @@
             <label for="inputName" class="col-sm-2 col-form-label">Marks</label>
             <div class="col-sm-4">
                 <input asp-for="Marks" type="text" class="form-control" id="inputName" placeholder="Marks">
+                <span asp-validation-for="Marks" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
             <label for="inputSurname" class="col-sm-2 col-form-label">Student Id</label>
             <div class="col-sm-4">
                 <input asp-for="StudentId" type="text" class="form-control" id="inputSurname" placeholder="Student Id">
+                <span asp-validation-for="StudentId" class="text-danger"></span>
             </div>
         </div>
 
@@ -38,6 +40,7 @@
             <label for="inputSurname" class="col-sm-2 col-form-label">Section Id</label>
             <div class="col-sm-4">
                 <input asp-for="SectionId" type="text" class="form-control" id="inputSurname" placeholder="Section Id">
+                <span asp-validation-for="SectionId" class="text-danger"></span>
             </div>
         </div>
 
@@ -45,6 +48,7 @@
             <label for="inputSurname" class="col-sm-2 col-form-label">Exam Id</label>
             <div class="col-sm-4">
                 <input asp-for="ExamId" type="text" class="form-control" id="inputSurname" placeholder="Exam Id">
+                <span asp-validation-for="ExamId" class="text-danger"></span>
             </div>
         </div>
 
