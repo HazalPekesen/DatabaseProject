@@ -1,0 +1,53 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model List<ExamMark>
+
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exam Mark Data View</title>
+    <link rel="stylesheet" href="~/css/tableCss/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+</head>
+<body>
+    <br />
+    <br />
+    <br />
+    <table class="standard-table" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Exam Mark Id</th>
+                <th>Marks</th>
+                <th>Student Id</th>
+                <th>Section Id</th>
+                <th>Exam Id</th>
+                <th>Update</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Marks</td>
+                    <td>@item.StudentId</td>
+                    <td>@item.SectionId</td>
+                    <td>@item.ExamId</td>
+                    <td><a asp-action="Update" asp-controller="ExamMark" asp-route-id="@item.Id" class="button">Update</a></td>
+                    <td><a asp-action="Remove" asp-controller="ExamMark" asp-route-id="@item.Id" class="button">Remove</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div style="text-align:center !important ;">
+        <a type="button" href="/ExamMark/Index" class="btn btn-outline-primary">Anasayfa'ya Dön!</a>
+    </div>
+</body>
+</html>

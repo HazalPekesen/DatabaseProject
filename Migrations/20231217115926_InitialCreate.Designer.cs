@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DatabaseProject.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231124175737_mig1")]
-    partial class mig1
+    [Migration("20231217115926_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,11 +54,9 @@ namespace DatabaseProject.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ExamId"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Place")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Time")
@@ -71,26 +69,31 @@ namespace DatabaseProject.Migrations
 
             modelBuilder.Entity("DatabaseProject.Models.ExamMark", b =>
                 {
-                    b.Property<int>("StudentId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ExamId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Marks")
                         .HasColumnType("int");
 
                     b.Property<int>("SectionId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ExamId")
+                    b.Property<int>("StudentId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ExamMarkId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Marks")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("StudentId", "SectionId", "ExamId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ExamId");
 
                     b.HasIndex("SectionId");
+
+                    b.HasIndex("StudentId");
 
                     b.ToTable("ExamMarks");
                 });
@@ -139,14 +142,12 @@ namespace DatabaseProject.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentId"));
 
                     b.Property<string>("DeptName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TotCred")
+                    b.Property<int?>("TotCred")
                         .HasColumnType("int");
 
                     b.HasKey("StudentId");

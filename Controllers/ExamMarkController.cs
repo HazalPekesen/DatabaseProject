@@ -1,29 +1,27 @@
 ﻿using DatabaseProject.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace DatabaseProject.Controllers
 {
-    public class CourseController : Controller, IGenericController<Course>
+    public class ExamMarkController : Controller, IGenericController<ExamMark>
     {
         AppDbContext _context;
 
-        public CourseController(AppDbContext context)
+        public ExamMarkController(AppDbContext context)
         {
             _context = context;
         }
-
         public IActionResult Add()
         {
-            return View(new Course());
+            return View(new ExamMark());
         }
 
         [HttpPost]
-        public IActionResult Add(Course entity)
+        public IActionResult Add(ExamMark entity)
         {
-            _context.Courses.Add(entity);
+            _context.ExamMarks.Add(entity);
             _context.SaveChanges();
-            TempData["SuccessMessage"] = "Course bilgileri başarıyla eklenmiştir.";
+            TempData["SuccessMessage"] = "Exam Marks bilgileri başarıyla eklenmiştir.";
             return RedirectToAction("Index");
         }
 
@@ -31,52 +29,52 @@ namespace DatabaseProject.Controllers
         {
             return View();
         }
-
         public IActionResult View()
         {
-            var list = _context.Courses.ToList();
+            var list = _context.ExamMarks.ToList();
             return View(list);
         }
 
         public IActionResult Remove(int id)
         {
-            var course = _context.Courses.FirstOrDefault(x => x.CourseId == id);
-            _context.Courses.Remove(course);
+            var examMark = _context.ExamMarks.FirstOrDefault(x => x.Id == id);
+            _context.ExamMarks.Remove(examMark);
             _context.SaveChanges();
-            TempData["Remove"] = course.CourseId;
+            TempData["Remove"] = examMark.Id;
             return RedirectToAction("Index");
         }
 
         public IActionResult Update(int id)
         {
-            var course = _context.Courses.FirstOrDefault(x => x.CourseId == id);
+            var examMark = _context.ExamMarks.FirstOrDefault(x => x.Id == id);
 
-            if (course == null)
+            if (examMark == null)
             {
                 // Eğer exam null ise, hata mesajı veya uygun bir işleme stratejisi uygulayın.
-                TempData["ErrorMessage"] = "Belirtilen ID'ye sahip course bulunamadı.";
+                TempData["ErrorMessage"] = "Belirtilen ID'ye sahip sınav bulunamadı.";
                 return RedirectToAction("Index");
             }
 
-            return View(course);
+            return View(examMark);
         }
 
         [HttpPost]
-        public IActionResult Update(Course entity)
+        public IActionResult Update(ExamMark entity)
         {
             if (ModelState.IsValid)
             {
-                var course = _context.Courses.FirstOrDefault(x => x.CourseId == entity.CourseId);
+                var examMark = _context.ExamMarks.FirstOrDefault(x => x.Id == entity.Id);
 
-                if (course != null)
+                if (examMark != null)
                 {
-                    course.CourseId = entity.CourseId;
-                    course.Title = entity.Title;
-                    course.Credits = entity.Credits;
-                    course.SecCourses = entity.SecCourses;
-                    _context.Courses.Update(course);
+                    examMark.Id = entity.Id;
+                    examMark.Marks = entity.Marks;
+                    examMark.StudentId = entity.StudentId;
+                    examMark.SectionId = entity.SectionId;
+                    examMark.ExamId = entity.ExamId;
+                    _context.ExamMarks.Update(examMark);
                     _context.SaveChanges();
-                    TempData["SuccessMessage"] = "Course bilgileri başarıyla değiştirilmiştir.";
+                    TempData["SuccessMessage"] = "Exam Mark başarıyla değiştirilmiştir.";
                     return RedirectToAction("Index");
                 }
 
@@ -84,7 +82,7 @@ namespace DatabaseProject.Controllers
 
             else
             {
-                TempData["ErrorMessage"] = "Güncellenmek istenen course bulunamadı.";
+                TempData["ErrorMessage"] = "Güncellenmek istenen sınav bulunamadı.";
             }
 
 

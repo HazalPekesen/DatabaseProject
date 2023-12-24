@@ -51,11 +51,9 @@ namespace DatabaseProject.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ExamId"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Place")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Time")
@@ -68,26 +66,31 @@ namespace DatabaseProject.Migrations
 
             modelBuilder.Entity("DatabaseProject.Models.ExamMark", b =>
                 {
-                    b.Property<int>("StudentId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("SectionId")
-                        .HasColumnType("int");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ExamId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ExamMarkId")
                         .HasColumnType("int");
 
                     b.Property<int>("Marks")
                         .HasColumnType("int");
 
-                    b.HasKey("StudentId", "SectionId", "ExamId");
+                    b.Property<int>("SectionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("ExamId");
 
                     b.HasIndex("SectionId");
+
+                    b.HasIndex("StudentId");
 
                     b.ToTable("ExamMarks");
                 });
@@ -136,14 +139,12 @@ namespace DatabaseProject.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentId"));
 
                     b.Property<string>("DeptName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TotCred")
+                    b.Property<int?>("TotCred")
                         .HasColumnType("int");
 
                     b.HasKey("StudentId");

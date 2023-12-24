@@ -1,0 +1,63 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model ExamMark
+
+@section Scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial");
+}
+
+<div class="jumbotron">
+    <h1 class="display-4"><strong>Database Platform</strong></h1>
+    <hr class="my-4">
+    <p class="lead">Update Exam Mark</p>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+</div>
+
+<!-- Sınav EkLeme Formu-->
+<div class="container">
+    <form asp-controller="ExamMark" asp-action="Update" method="post">
+
+        <input asp-for="Id" type="hidden" value="@Model.Id" />
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Marks</label>
+            <div class="col-sm-4">
+                <input asp-for="Marks" type="text" class="form-control" id="inputName" placeholder="Marks">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Student Id</label>
+            <div class="col-sm-4">
+                <input asp-for="StudentId" type="text" class="form-control" id="inputSurname" placeholder="Student Id">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Section Id</label>
+            <div class="col-sm-4">
+                <input asp-for="SectionId" type="text" class="form-control" id="inputSurname" placeholder="Section Id">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Exam Id</label>
+            <div class="col-sm-4">
+                <input asp-for="ExamId" type="text" class="form-control" id="inputSurname" placeholder="Exam Id">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="offset-sm-2 col-sm-4">
+                <button type="submit" class="btn btn-primary">Update Exam Mark</button>
+                <a type="button" href="/ExamMark/Index" class="btn btn-outline-primary">Anasayfa'ya Dön!</a>
+            </div>
+        </div>
+
+    </form>
+</div>

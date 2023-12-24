@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DatabaseProject.Migrations
 {
     /// <inheritdoc />
-    public partial class mig1 : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -31,8 +31,8 @@ namespace DatabaseProject.Migrations
                 {
                     ExamId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Place = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Place = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Time = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -60,9 +60,9 @@ namespace DatabaseProject.Migrations
                 {
                     StudentId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DeptName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TotCred = table.Column<int>(type: "int", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeptName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TotCred = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -97,15 +97,16 @@ namespace DatabaseProject.Migrations
                 name: "ExamMarks",
                 columns: table => new
                 {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Marks = table.Column<int>(type: "int", nullable: false),
                     StudentId = table.Column<int>(type: "int", nullable: false),
                     SectionId = table.Column<int>(type: "int", nullable: false),
-                    ExamId = table.Column<int>(type: "int", nullable: false),
-                    ExamMarkId = table.Column<int>(type: "int", nullable: false),
-                    Marks = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    ExamId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ExamMarks", x => new { x.StudentId, x.SectionId, x.ExamId });
+                    table.PrimaryKey("PK_ExamMarks", x => x.Id);
                     table.ForeignKey(
                         name: "FK_ExamMarks_Exams_ExamId",
                         column: x => x.ExamId,
@@ -135,6 +136,11 @@ namespace DatabaseProject.Migrations
                 name: "IX_ExamMarks_SectionId",
                 table: "ExamMarks",
                 column: "SectionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ExamMarks_StudentId",
+                table: "ExamMarks",
+                column: "StudentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SecCourses_CourseId",

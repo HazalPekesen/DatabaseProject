@@ -24,7 +24,7 @@ namespace DatabaseProject
 
             // Many-to-Many relationship between Student and Exam
             modelBuilder.Entity<ExamMark>()
-                .HasKey(em => new { em.StudentId, em.SectionId, em.ExamId });
+                .HasKey(em => new { em.Id });
 
             modelBuilder.Entity<ExamMark>()
                 .HasOne(em => em.Student)
@@ -57,7 +57,11 @@ namespace DatabaseProject
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-
-        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-R25IHH5\\MSSQLSERVER044;Initial Catalog=DatabaseProjectDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-R25IHH5\\MSSQLSERVER044;Initial Catalog=DatabaseProjectDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            }
+        }
     }
 }

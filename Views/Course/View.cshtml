@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model List<Course>
+
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Data View</title>
+    <link rel="stylesheet" href="~/css/tableCss/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+</head>
+<body>
+    <br />
+    <br />
+    <br />
+    <table class="standard-table" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Course Id</th>
+                <th>Title</th>
+                <th>Credits</th>
+                <th>Update</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CourseId</td>
+                    <td>@item.Title</td>
+                    <td>@item.Credits</td>
+                    <td><a asp-action="Update" asp-controller="Course" asp-route-id="@item.CourseId" class="button">Update</a></td>
+                    <td><a asp-action="Remove" asp-controller="Course" asp-route-id="@item.CourseId" class="button">Remove</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div style="text-align:center !important ;">
+        <a type="button" href="/Course/Index" class="btn btn-outline-primary">Anasayfa'ya Dön!</a>
+    </div>
+</body>
+</html>
+ 

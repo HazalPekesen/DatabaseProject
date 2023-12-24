@@ -1,0 +1,49 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model Section
+
+@section Scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial");
+}
+
+<div class="jumbotron">
+    <h1 class="display-4"><strong>Database Platform</strong></h1>
+    <hr class="my-4">
+    <p class="lead">Update Section</p>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+</div>
+
+<!-- Sınav EkLeme Formu-->
+<div class="container">
+    <form asp-controller="Section" asp-action="Update" method="post">
+
+        <input asp-for="SectionId" type="hidden" value="@Model.SectionId" />
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Semester</label>
+            <div class="col-sm-4">
+                <input asp-for="Semester" type="text" class="form-control" id="inputName" placeholder="Semester">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Year</label>
+            <div class="col-sm-4">
+                <input asp-for="Year" type="datetime" class="form-control" id="inputMail" placeholder="Year">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="offset-sm-2 col-sm-4">
+                <button type="submit" class="btn btn-primary">Update Section</button>
+                <a type="button" href="/Section/Index" class="btn btn-outline-primary">Anasayfa'ya Dön!</a>
+            </div>
+        </div>
+
+    </form>
+</div>

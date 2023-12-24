@@ -8,6 +8,6 @@ namespace DatabaseProject.Models
         public int CourseId { get; set; }
         public string Title { get; set; }
         public int Credits { get; set; }
-        public List<SectionCourse> SecCourses { get; set; } // Navigation Property for SecCourses
+        public List<SectionCourse>? SecCourses { get; set; } // Navigation Property for SecCourses
     }
 }

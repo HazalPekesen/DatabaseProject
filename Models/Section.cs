@@ -8,7 +8,7 @@ namespace DatabaseProject.Models
         public int SectionId { get; set; }
         public string Semester { get; set; }
         public int Year { get; set; }
-        public List<SectionCourse> SecCourses { get; set; } // Navigation Property for SecCourses
-        public List<ExamMark> ExamMarks { get; set; } // Navigation Property for Exams
+        public List<SectionCourse>? SecCourses { get; set; } // Navigation Property for SecCourses
+        public List<ExamMark>? ExamMarks { get; set; } // Navigation Property for Exams
     }
 }

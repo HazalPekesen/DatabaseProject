@@ -1,5 +1,6 @@
 ﻿using DatabaseProject.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DatabaseProject.Controllers
 {
@@ -17,11 +18,29 @@ namespace DatabaseProject.Controllers
             return View();
         }
 
+
         public IActionResult View()
         {
-            var list = _context.Students.ToList();
-            return View(list);
+            var studentsWithExamMarks = _context.Students
+                .Include(s => s.ExamMarks)
+                    .ThenInclude(em => em.Section)
+                .Include(s => s.ExamMarks)
+                    .ThenInclude(em => em.Exam)
+                .ToList();
+
+            // ViewModel'e dönüştürme
+            var viewModelList = studentsWithExamMarks.Select(student => new StudentViewModel
+            {
+                StudentId = student.StudentId,
+                Name = student.Name,
+                DeptName = student.DeptName,
+                TotCred = student.TotCred,
+                ExamMarks = student.ExamMarks
+            }).ToList();
+
+            return View(viewModelList);
         }
+
 
         public IActionResult Add()
         {

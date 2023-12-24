@@ -2,9 +2,7 @@
     Layout = null;
 }
 
-@model List<Student>
-
-<!DOCTYPE html>
+@model List<StudentViewModel>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +36,14 @@
                     <td>@item.Name</td>
                     <td>@item.DeptName</td>
                     <td>@item.TotCred</td>
-                    <td>@item.ExamMarks</td>
+                    <td>
+                        <ul>
+                            @foreach (var examMark in item.ExamMarks)
+                            {
+                                <li>@examMark.Marks</li>
+                            }
+                        </ul>
+                    </td>
                     <td><a asp-action="Update" asp-controller="Student" asp-route-id="@item.StudentId" class="button">Update</a></td>
                     <td><a asp-action="Remove" asp-controller="Student" asp-route-id="@item.StudentId" class="button">Remove</a></td>
                 </tr>
